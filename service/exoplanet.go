@@ -82,12 +82,6 @@ func ListExoplanets() func(c *gin.Context) {
 			return planets[i].Radius < planets[j].Radius
 		})
 
-		// // Reconstruct the sorted map
-		// sortedMap := make(map[string]model.ExoPlanet)
-		// for _, planet := range planets {
-		// 	sortedMap[planet.ID] = planet
-		// }
-
 		c.JSON(http.StatusOK, planets)
 		log.Print("successfully listed all exoplanets")
 	}
