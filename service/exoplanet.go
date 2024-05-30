@@ -16,6 +16,7 @@ import (
 var inMemoryStore = make(map[string]model.ExoPlanet)
 var validate = validator.New(validator.WithRequiredStructEnabled())
 
+// AddExoplanet add exoplanet
 func AddExoplanet() func(c *gin.Context) {
 	return func(c *gin.Context) {
 
@@ -27,6 +28,7 @@ func AddExoplanet() func(c *gin.Context) {
 			return
 		}
 
+		// validating the request body as per required validations
 		err := validate.Struct(planet)
 		if err != nil {
 			if _, ok := err.(*validator.InvalidValidationError); ok {
@@ -43,7 +45,8 @@ func AddExoplanet() func(c *gin.Context) {
 			return
 		}
 
-		ok := IsExoPlanetExists(planet.Name)
+		// if exoplanet with same name already exist then returning the request
+		ok := isExoPlanetExists(planet.Name)
 		if ok {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Oops! Planet already exists. Please, try different name."})
 			return
@@ -57,7 +60,8 @@ func AddExoplanet() func(c *gin.Context) {
 	}
 }
 
-func IsExoPlanetExists(name string) bool {
+// isExoPlanetExists checks whether exoplanet with same name already exist then returning the request
+func isExoPlanetExists(name string) bool {
 
 	for _, v := range inMemoryStore {
 		if v.Name == name {
@@ -68,6 +72,7 @@ func IsExoPlanetExists(name string) bool {
 	return false
 }
 
+// ListExoplanets lists all the exoplanets by sorted order of radius
 func ListExoplanets() func(c *gin.Context) {
 	return func(c *gin.Context) {
 
@@ -87,6 +92,7 @@ func ListExoplanets() func(c *gin.Context) {
 	}
 }
 
+// GetExoplanet fetches the exoplanet with id
 func GetExoplanet() func(c *gin.Context) {
 	return func(c *gin.Context) {
 
@@ -102,6 +108,7 @@ func GetExoplanet() func(c *gin.Context) {
 	}
 }
 
+// UpdateExoplanet if exoplanet with id exists, updates the attributes
 func UpdateExoplanet() func(c *gin.Context) {
 	return func(c *gin.Context) {
 
@@ -142,6 +149,7 @@ func UpdateExoplanet() func(c *gin.Context) {
 	}
 }
 
+// DeleteExoplanet deletes exoplanet if it is found
 func DeleteExoplanet() func(c *gin.Context) {
 	return func(c *gin.Context) {
 
@@ -182,6 +190,7 @@ func DeleteExoplanet() func(c *gin.Context) {
 	}
 }
 
+// EstimateFuel estimates fuel as per the given formula in document
 func EstimateFuel() func(c *gin.Context) {
 	return func(c *gin.Context) {
 
