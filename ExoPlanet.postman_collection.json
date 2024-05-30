@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "1e677bfb-f60b-431d-b847-49b0800c1048",
+		"name": "ExoPlanet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14480719"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Saturn\",\r\n    \"description\" : \"planet of shukra dev\",\r\n    \"distance\": 5,\r\n    \"radius\": 4,\r\n    \"exo_planet_type\":\"GasGiant\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exoplanet",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exoplanet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/listexoplanets",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"listexoplanets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"e602984a-d44d-4621-b54e-bf74c562dce8\",\r\n    \"name\":\"Shukra\",\r\n    \"description\" : \"planet of rishi shukra\",\r\n    \"distance\": 5,\r\n    \"radius\": 4,\r\n    \"mass\":90,\r\n    \"exo_planet_type\":\"Terrestrial\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exoplanet",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exoplanet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"e602984a-d44d-4621-b54e-bf74c562dce\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exoplanet",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exoplanet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EstimateFuel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"c2fa35bc-464f-41da-bcf3-a54f47234577\",\r\n    \"capacity\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/estimate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estimate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exoplanet?id=9320b52d-6f85-4341-95a4-a630e6252d2c",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exoplanet"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "9320b52d-6f85-4341-95a4-a630e6252d2c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
