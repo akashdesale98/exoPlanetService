@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 
 	"github.com/akashdesale98/exoPlanetService/model"
@@ -69,7 +70,25 @@ func IsExoPlanetExists(name string) bool {
 
 func ListExoplanets() func(c *gin.Context) {
 	return func(c *gin.Context) {
-		c.JSON(http.StatusOK, inMemoryStore)
+
+		// Extract values from map
+		var planets []model.ExoPlanet
+		for _, planet := range inMemoryStore {
+			planets = append(planets, planet)
+		}
+
+		// Sort by radius
+		sort.Slice(planets, func(i, j int) bool {
+			return planets[i].Radius < planets[j].Radius
+		})
+
+		// // Reconstruct the sorted map
+		// sortedMap := make(map[string]model.ExoPlanet)
+		// for _, planet := range planets {
+		// 	sortedMap[planet.ID] = planet
+		// }
+
+		c.JSON(http.StatusOK, planets)
 		log.Print("successfully listed all exoplanets")
 	}
 }
